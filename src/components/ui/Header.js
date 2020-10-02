@@ -1,5 +1,12 @@
 import React from "react";
-import { AppBar, Toolbar, useScrollTrigger, Slide } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  useScrollTrigger,
+  Slide,
+  Typography,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -13,12 +20,24 @@ function HideOnScroll(props) {
   );
 }
 
+const useStyles = makeStyles((theme) => ({
+  toolbarMargin: {
+    ...theme.mixins.toolbar,
+  },
+}));
+
 export default function Header(props) {
+  const classes = useStyles();
   return (
-    <HideOnScroll>
-      <AppBar position="fixed">
-        <Toolbar>Arc Development</Toolbar>
-      </AppBar>
-    </HideOnScroll>
+    <React.Fragment>
+      <HideOnScroll>
+        <AppBar position="fixed">
+          <Toolbar>
+            <Typography variant="h3">Arc Development</Typography>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+      <div className={classes.toolbarMargin} />
+    </React.Fragment>
   );
 }
