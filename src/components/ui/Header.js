@@ -20,6 +20,7 @@ function HideOnScroll(props) {
   );
 }
 
+// API Hook for custom 'inline' style use
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
   const classes = useStyles();
+
   return (
     <React.Fragment>
       <HideOnScroll>
