@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  useScrollTrigger,
-  Slide,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Toolbar, useScrollTrigger, Slide } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+
+import logo from "../../assets/logo.svg";
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -24,6 +20,10 @@ function HideOnScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
+    marginBottom: "3em",
+  },
+  logo: {
+    height: "7em",
   },
 }));
 
@@ -34,8 +34,8 @@ export default function Header(props) {
     <React.Fragment>
       <HideOnScroll>
         <AppBar position="fixed">
-          <Toolbar>
-            <Typography variant="h3">Arc Development</Typography>
+          <Toolbar disableGutters>
+            <img src={logo} className={classes.logo} />
           </Toolbar>
         </AppBar>
       </HideOnScroll>
