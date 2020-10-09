@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (e, value) => setValue(value);
 
   return (
     <React.Fragment>
@@ -58,7 +61,12 @@ export default function Header(props) {
         <AppBar position="fixed">
           <Toolbar disableGutters>
             <img src={logo} className={classes.logo} />
-            <Tabs className={classes.tabContainer}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              className={classes.tabContainer}
+              indicatorColor="primary"
+            >
               <Tab className={classes.tab} label="Home" />
               <Tab className={classes.tab} label="Services" />
               <Tab className={classes.tab} label="The Revolution" />
