@@ -118,17 +118,21 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function Header(props) {
+export default function Header({
+	value,
+	setValue,
+	selectedIndex,
+	setSelectedIndex,
+}) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 	const [openDrawer, setOpenDrawer] = React.useState(false);
 	const matches = useMediaQuery(theme.breakpoints.down("md"));
-	const [value, setValue] = React.useState(0);
+
 	const [anchor, setAnchor] = React.useState(null);
 	const [openMenu, setOpenMenu] = React.useState(false);
-	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
 	const handleChange = (e, value) => setValue(value);
 
