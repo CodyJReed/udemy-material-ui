@@ -68,6 +68,9 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: "50px",
 		margin: "0 25px 0 50px",
 		height: "45px",
+		"&:hover": {
+			backgroundColor: theme.palette.secondary.light,
+		},
 	},
 	menu: {
 		backgroundColor: theme.palette.common.blue,
@@ -127,10 +130,8 @@ export default function Header({
 	const classes = useStyles();
 	const theme = useTheme();
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-
 	const [openDrawer, setOpenDrawer] = React.useState(false);
 	const matches = useMediaQuery(theme.breakpoints.down("md"));
-
 	const [anchor, setAnchor] = React.useState(null);
 	const [openMenu, setOpenMenu] = React.useState(false);
 
@@ -204,7 +205,7 @@ export default function Header({
 					break;
 			}
 		});
-	}, [value, menuOptions, selectedIndex, routes]);
+	}, [value, menuOptions, selectedIndex, routes, setSelectedIndex, setValue]);
 
 	const tabs = (
 		<React.Fragment>
