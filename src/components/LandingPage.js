@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles, useTheme } from "@material-ui/styles";
 import { Grid, Button, Typography } from "@material-ui/core";
 import ButtonArrow from "./ui/ButtonArrow";
 
@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
 		minWidth: "21em",
 		marginTop: "2em",
 		marginLeft: "10%",
+		[theme.breakpoints.down("sm")]: {
+			maxWidth: "30em",
+		},
 	},
 	estimateButton: {
 		...theme.typography.estimate,
@@ -24,10 +27,42 @@ const useStyles = makeStyles(theme => ({
 			backgroundColor: theme.palette.secondary.light,
 		},
 	},
+	buttonContainer: {
+		marginTop: "1em",
+	},
+	learnButtonHero: {
+		borderColor: theme.palette.common.blue,
+		color: theme.palette.common.blue,
+		borderWidth: 2,
+		textTransform: "none",
+		borderRadius: 50,
+		fontfamily: "Roboto",
+		fontWeight: "bold",
+		fontSize: "0.9rem",
+		height: 45,
+		width: 145,
+	},
+	mainContainer: {
+		marginTop: "5em",
+		[theme.breakpoints.down("md")]: {
+			marginTop: "3em",
+		},
+		[theme.breakpoints.down("xs")]: {
+			marginTop: "2em",
+		},
+	},
+	heroTextContainer: {
+		minWidth: "21.5em",
+		marginLeft: "1em",
+		[theme.breakpoints.down("xs")]: {
+			marginLeft: 0,
+		},
+	},
 }));
 
 export default function LandingPage() {
 	const classes = useStyles();
+	const theme = useTheme();
 
 	const defaultOptions = {
 		loop: true,
@@ -39,10 +74,10 @@ export default function LandingPage() {
 	};
 
 	return (
-		<Grid container direction="column">
-			<Grid item sm>
+		<Grid container direction="column" className={classes.mainContainer}>
+			<Grid item>
 				<Grid container direction="row" justify="flex-end" alignItems="center">
-					<Grid item>
+					<Grid item sm className={classes.heroTextContainer}>
 						<Typography align="center" variant="h2">
 							Bringing West Coast Technology
 							<br />
@@ -59,9 +94,13 @@ export default function LandingPage() {
 								</Button>
 							</Grid>
 							<Grid item>
-								<Button variant="outlined">
-									Learn More
-									<ButtonArrow width={15} height={15} fill="red" />
+								<Button variant="outlined" className={classes.learnButtonHero}>
+									<span style={{ marginRight: 10 }}>Learn More</span>
+									<ButtonArrow
+										width={15}
+										height={15}
+										fill={theme.palette.common.blue}
+									/>
 								</Button>
 							</Grid>
 						</Grid>
