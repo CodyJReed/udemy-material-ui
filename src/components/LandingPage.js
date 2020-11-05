@@ -17,6 +17,7 @@ import customSoftwareIcon from "../assets/Custom Software Icon.svg";
 import mobileAppsIcon from "../assets/mobileIcon.svg";
 import websitesIcon from "../assets/websiteIcon.svg";
 import revolutionBackground from "../assets/repeatingBackground.svg";
+import infoBackground from "../assets/infoBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
@@ -105,6 +106,19 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[10],
     borderRadius: 15,
     padding: "10em",
+    [theme.breakpoints.down("sm")]: {
+      padding: "8em 0",
+      borderRadius: 0,
+      width: "100%",
+    },
+  },
+  infoBackground: {
+    backgroundImage: `url(${infoBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%",
+    width: "100%",
   },
 }));
 
@@ -312,6 +326,8 @@ export default function LandingPage({ setValue, setSelectedIndex }) {
         </Grid>
       </Grid>
       <Grid item>
+        {" "}
+        {/*-----Revolution Block-----*/}
         <Grid
           container
           style={{ height: "100em", marginTop: "12em" }}
@@ -326,7 +342,9 @@ export default function LandingPage({ setValue, setSelectedIndex }) {
                 style={{ textAlign: "center" }}
               >
                 <Grid item>
-                  <Typography variant="h3">The Revolution</Typography>
+                  <Typography variant="h3" gutterBottom>
+                    The Revolution
+                  </Typography>
                 </Grid>
                 <Grid item>
                   <Typography variant="subtitle1">
@@ -349,6 +367,66 @@ export default function LandingPage({ setValue, setSelectedIndex }) {
             </CardContent>
           </Card>
           <div className={classes.revolutionBackground} />
+        </Grid>
+      </Grid>
+      <Grid item>
+        {" "}
+        {/*-----Revolution Block-----*/}
+        <Grid
+          container
+          style={{ height: "80em" }}
+          alignItems="center"
+          justify="space-around"
+        >
+          <Grid
+            item
+            container
+            style={{ position: "absolute" }}
+            justify="space-around"
+          >
+            <Grid item>
+              <Grid container direction="column">
+                <Typography variant="h2" style={{ color: "#fff" }}>
+                  About Us
+                </Typography>
+                <Typography variant="subtitle2">Let's Get Personal</Typography>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    style={{ color: "#fff", borderColor: "#fff" }}
+                    className={classes.learnButtonHero}
+                  >
+                    <span style={{ marginRight: 10 }}>Learn More</span>
+                    <ButtonArrow width={15} height={15} fill="white" />
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Grid container direction="column" style={{ textAlign: "right" }}>
+                <Typography variant="h2" style={{ color: "#fff" }}>
+                  Contact Us
+                </Typography>
+                <Typography variant="subtitle2">
+                  Say hello!{" "}
+                  <span role="img" aria-label="waving hand">
+                    👋
+                  </span>
+                </Typography>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    style={{ color: "#fff", borderColor: "#fff" }}
+                    className={classes.learnButtonHero}
+                  >
+                    <span style={{ marginRight: 10 }}>Learn More</span>
+                    <ButtonArrow width={15} height={15} fill="white" />
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          <div className={classes.infoBackground} />
         </Grid>
       </Grid>
     </Grid>
